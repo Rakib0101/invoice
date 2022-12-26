@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zakirsoft Invoice Template</title>
+    <style>
+        /* Font Include */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+        .main-body {
+            font-family: 'Roboto', sans-serif;
+            letter-spacing: 0.04em;
+        }
+
+        .invoice {
+            font-family: 'Roboto', sans-serif;
+            background: #FFFFFF;
+            padding: 32px;
+            margin: 0 auto;
+        }
+
+        .invoice[size="A4"] {
+            width: 21cm;
+            height: 29.7cm;
+            overflow: hidden;
+        }
+
+        /* Top Section */
+        .top-content{
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 24px;
+        }
+
+        .top-content .top-left .logo{
+            width: 180px;
+        }
+
+        .top-content .top-left .logo img{
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .top-content .top-right{
+            text-align: right;
+        }
+
+        .top-content .top-right .title{
+            margin-top: 0px;
+            margin-bottom: 24px;
+            font-size: 36px;
+            line-height: 44px;
+            font-weight: 400;
+        }
+
+        .top-content .top-right .address h3{
+            margin-top: 0px;
+            margin-bottom: 8px;
+            font-size: 24px;
+            line-height: 32px;
+            font-weight: 400;
+        }
+
+        .top-content .top-right .address p{
+            margin-top: 0px;
+            font-size: 16px;
+            line-height: 24px;
+            font-weight: 400;
+            margin-bottom: 4px;
+        }
+        .top-content .top-right .address p:last-child{
+            margin-bottom: 0px;
+        }
+
+
+        /* Bill to content */
+        .bill-to-content {
+            padding: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #F5F7FA;
+            margin-bottom: 32px;
+        }
+
+        .bill-to-content-left p {
+            color: #21232A;
+            margin: 0;
+            font-size: 16px;
+            line-height: 24px;
+            font-weight: 500;
+        }
+
+        .bill-to-content-left p span{
+            font-weight: 400;
+        }
+
+        .bill-to-content-right{
+            text-align: right;
+        }
+
+        .bill-to-content-right .badge{
+            text-transform: uppercase;
+            border: 2px solid #687173;
+            padding: 4px;
+            border-radius: 8px;
+            color: #687173;
+            margin-bottom: 12px;
+        }
+
+        .bill-to-content-right .price{
+            margin-top: 0px;
+            margin-bottom: 8px;
+            font-size: 32px;
+            line-height: 32px;
+            font-weight: 500;
+        }
+
+        .bill-to-content-right p{
+            margin: 0px;
+            font-size: 20px;
+            line-height: 24px;
+            font-weight: 500;
+        }
+
+        .bill-to{
+            margin-bottom: 32px;
+        }
+
+        .bill-to .title{
+            font-size: 32px;
+            font-weight: 400;
+            margin-top: 0px;
+            margin-bottom: 8px;
+        }
+
+        .bill-to .mail{
+            margin: 0px;
+            font-size: 20px;
+        }
+
+        /* Invoice Table Section */
+        .table {
+            width: 100%;
+            overflow: scroll;
+        }
+
+        .invoice-table .table thead tr {
+            color: #000;
+            font-weight: 700;
+            background: #EAECED;
+        }
+
+        .hash-col {
+            max-width: 20px;
+        }
+
+        .description-col {
+            max-width: 220px;
+        }
+
+        .qty-col, .price-col, .amount-col{
+            text-align: right;
+            max-width: 45px;
+        }
+
+        .table tr td{
+            font-size: 14px;
+            padding: 10px 15px;
+            margin: 0px;
+            border-bottom: 1px solid #D2D3D9;
+        }
+
+        .table tr td , 
+        .table tr td h2,
+        .table tr td p{
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            margin: 0;
+            font-size: 14px;
+        }
+        .table tr td h2{
+            margin-bottom: 4px;
+        }
+
+        /* price summary section */
+        .price-summary-wrap{
+            width: 50%;
+            margin-left: auto;
+            text-align: right;
+            padding: 0px 15px;
+        }
+
+        .price-summary-wrap .flex{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0px;
+        }
+
+        .price-summary-wrap .flex.pb-0{
+            padding-bottom: 0px;
+        }
+
+        .price-summary-wrap .bb{
+            border-bottom: 1px solid #D2D3D9;
+        }
+
+        .price-summary-wrap .w-50{
+            width: 50%;
+            margin: 0px;
+        }
+
+    </style>
+</head>
+
+<body class="main-body">
+    <div class="invoice" size="A4">
+        <!-- top content start -->
+        <section class="top-content">
+            <div class="top-left">
+                <div class="logo">
+                    <img src="images/logo.png" alt="" class="img-fluid">
+                </div>
+            </div>
+            <div class="top-right">
+                <h2 class="title">INVOICE</h2>
+                <div class="address">
+                    <h3>Zakir Soft</h3>
+                    <p>Home# 1024/N, Road# 17/A, Road# 16/B Adabor, 1207 DHAKA</p>
+                    <p><span>+88001625592566;</span><span>web.zakirbd@gmail.com</span></p>
+                </div>
+            </div>
+        </section>
+        <!-- top content end -->
+
+        <!-- bill to content start -->
+        <section class="bill-to-content">
+            <div class="bill-to-content-left">
+                <p>Invoice No#: <span>002</span></p>
+                <p>Invoice Date: <span>06 Jun 2022</span></p>
+                <p>Due Date: <span>06 June 2022</span></p>
+            </div>
+            <div class="bill-to-content-right">
+                <p class="badge">Partially Refunded</p>
+                <h2 class="price">0.00 USD</h2>
+                <p>Amount Due</p>
+            </div>
+        </section>
+        <div class="bill-to">
+            <h2 class="title">BILL TO</h2>
+            <p class="mail">web.corp@gmail.com</p>
+        </div>
+        <!-- bill to content start -->
+
+        <!-- invoice table start -->
+        <section class="invoice-table mt-4">
+            <table class="table" cellspacing="0">
+                <thead>
+                    <tr>
+                        <td class="hash-col">#</td>
+                        <td class="description-col">ITEMS & DESCRIPTION</td>
+                        <td class="qty-col">QTY/HRS</td>
+                        <td class="price-col">PRICE</td>
+                        <td class="amount-col">AMOUNT($)</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="hash-col">
+                            1
+                        </td>
+                        <td class="description-col">
+                            <h2>Website Developement</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, magni.</p>
+                        </td>
+                        <td class="qty-col">1</td>
+                        <td class="price-col">175.00 USD</td>
+                        <td class="amount-col">175.00 USD</td>
+                    </tr>
+                    <tr>
+                        <td class="hash-col">
+                            2
+                        </td>
+                        <td class="description-col">
+                            <h2>Installation Service</h2>
+                        </td>
+                        <td class="qty-col">1</td>
+                        <td class="price-col">20.00 USD</td>
+                        <td class="amount-col">20.00 USD</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <!-- invoice table end -->
+
+        <section class="price-summary">
+            <div class="price-summary-wrap">
+                <div>
+                    <div class="flex bb subtotal">
+                        <p class="w-50">Subtotal</p>
+                        <p class="w-50">195.00 USD</p>
+                    </div>
+                    <div class="flex pb-0 total">
+                        <p class="w-50">TOTAL</p>
+                        <p class="w-50">195.00 USD</p>
+                    </div>
+                    <div class="flex bb pt-0 paid">
+                        <p class="w-50">Amount Paid</p>
+                        <p class="w-50">195.00 USD</p>
+                    </div>
+                    <div class="flex due">
+                        <p class="w-50">AMOUNT DUE</p>
+                        <p class="w-50">195.00 USD</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>
